@@ -1,3 +1,19 @@
+export interface OperationRecord {
+  key: string;
+  name: string;
+  owner: string;
+  status: string;
+  metric: string;
+  priority: string;
+}
+
+export interface KpiItem {
+  label: string;
+  value: string;
+  trend: string;
+  tone: string;
+}
+
 export const overviewData = {
   "appName": "连锁门店库存调配系统",
   "appCode": "ldstoreinventory",

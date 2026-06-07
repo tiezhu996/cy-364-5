@@ -1,9 +1,9 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Query } from "@nestjs/common";
 import { OverviewService } from "./overview.service";
 
 @Controller()
 export class OverviewController {
-  constructor(private readonly overviewService: OverviewService) {}
+  constructor(private readonly overviewService: OverviewService) { }
 
   @Get("health")
   health() {
@@ -16,12 +16,12 @@ export class OverviewController {
   }
 
   @Get("overview")
-  overview() {
-    return this.overviewService.getOverview();
+  overview(@Query("owner") owner?: string, @Query("priority") priority?: string) {
+    return this.overviewService.getOverview(owner, priority);
   }
 
   @Get("api/overview")
-  apiOverview() {
-    return this.overviewService.getOverview();
+  apiOverview(@Query("owner") owner?: string, @Query("priority") priority?: string) {
+    return this.overviewService.getOverview(owner, priority);
   }
 }
